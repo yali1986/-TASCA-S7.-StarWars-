@@ -9,7 +9,7 @@ export default function List() {
     return (
         <div className='container-fluid'>
             {error && <p>Error: {error}</p>}
-            <StarshipList starships={data} />
+            <StarshipList starships={data}/>
         </div>
     )
 }

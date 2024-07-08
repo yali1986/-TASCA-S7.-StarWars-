@@ -21,7 +21,7 @@ export const GlobalProvider = ({ children }) => {
 
     return (
         <Context.Provider value={{ data, error }}>
-            {children}
+            { children }
         </Context.Provider>
     )
 }
