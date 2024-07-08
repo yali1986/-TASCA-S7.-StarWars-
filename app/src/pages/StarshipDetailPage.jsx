@@ -13,7 +13,7 @@ export default function StarshipDetailPage() {
     return <div>Cargando...</div>;
   }
 
-  const starship = data.find(ship => ship.name.toLowerCase() === id.toLowerCase())
+  const starship = data.find(ship => ship.url.split("/")[5]=== id.toLowerCase())
 
   return (
     <div className="container-fluid text-center">

@@ -4,12 +4,12 @@ import StarshipList from '../components/StarshipList'
 
 
 export default function List() {
-    const { data, error } = useContext(Context)
+    const { data, error, loadMore, loading } = useContext(Context)
 
     return (
         <div className='container-fluid'>
             {error && <p>Error: {error}</p>}
-            <StarshipList starships={data}/>
+            <StarshipList starships={data} loadMore={loadMore} loading={loading}/>
         </div>
     )
 }

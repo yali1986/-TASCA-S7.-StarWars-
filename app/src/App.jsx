@@ -20,9 +20,9 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/list" element={<List />} />
           <Route path="/Home" element={<Home />} />
-          <Route path="//starship/:id"  element={<StarshipDetailPage />} />          
+          <Route path="/detail/:id"  element={<StarshipDetailPage />} />          
         </Routes>
-        
+
       </BrowserRouter>
 
     </GlobalProvider>
