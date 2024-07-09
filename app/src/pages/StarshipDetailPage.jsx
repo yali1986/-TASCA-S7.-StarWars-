@@ -2,6 +2,7 @@ import { useContext } from "react"
 import { useParams, Link } from "react-router-dom"
 import { Context } from "../context/GlobalState"
 import StarshipDetail from "../components/StarshipDetail"
+import { Navbar } from "../components/Navbar"
 
 
 export default function StarshipDetailPage() {
@@ -18,13 +19,12 @@ export default function StarshipDetailPage() {
   return (
     <div className="container-fluid text-center">
 
-<nav className="navbar bg-dark border-bottom border-body px-5 mx-5 mb-3" data-bs-theme="dark">
-      <div className="container-fluid justify-content-center">
-        <Link to="/" className="navbar-brand text-light">Home</Link>
-        <Link to="/list" className="navbar-brand text-light ms-5">Starships List</Link>
-      </div>
-    </nav>
-     
+<Navbar links={[
+  { path: "/", label: "Home" },
+  { path: "/list", label: "Starships List" },
+
+]} />
+
       
 
       <div className="text-center">

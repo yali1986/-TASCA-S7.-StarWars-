@@ -1,17 +1,16 @@
 import { Link } from "react-router-dom"
-import List from "./List"
+import { Navbar } from "../components/Navbar"
+
 
 
 export default function Home() {
   return (
     <div className="fs-5">
-     <p className="text-center mt-5">Home Page</p>
-    <Link to="/List">
-    <div className="row">
-   <button className="btn btn-primary col-auto mx-auto fs-5 mt-5">Starship List</button>
-   </div>
-    </Link>
-     
+     <p className="text-center m-5">Welcome to the page where you can revisit the Star Wars startships</p>
+
+    <Navbar links={[
+  { path: "/list", label: "Starships List" },
+]} />    
      
     </div>
   )
