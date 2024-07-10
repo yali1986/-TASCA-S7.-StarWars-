@@ -29,7 +29,7 @@ export const GlobalProvider = ({ children }) => {
         } finally {
             setLoading(false)
         }
-    };
+    }
 
     useEffect(() => {
         if (hasMore) {
@@ -41,7 +41,7 @@ export const GlobalProvider = ({ children }) => {
         if (hasMore && !loading) {
             setPage(prevPage => prevPage + 1)
         }
-    };
+    }
 
     return (
         <Context.Provider value={{ data, error, loadMore, loading }}>

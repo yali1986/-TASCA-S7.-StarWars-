@@ -6,8 +6,10 @@ import { Navbar } from './Navbar'
 const StarshipList = ({ starships, loadMore, loading }) => {
   useEffect(() => {
     const handleScroll = () => {
-      if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight || loading) return;
-      loadMore()
+      // Verifica si el usuario ha llegado al fondo de la página
+      if (window.innerHeight + document.documentElement.scrollTop >= document.documentElement.offsetHeight - 1 && !loading) {
+        loadMore()
+      }
     }
 
     window.addEventListener('scroll', handleScroll);
