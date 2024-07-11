@@ -16,6 +16,7 @@ export const GlobalProvider = ({ children }) => {
             if (!res.ok) {
                 if (res.status === 404) {
                     setHasMore(false)
+                    return 
                 }
                 throw new Error(`Error fetching data: ${res.status}`)
             }
@@ -25,7 +26,9 @@ export const GlobalProvider = ({ children }) => {
                 return [...prevData, ...newData]
             });
         } catch (error) {
-            setError(error.message)
+            if (error.message !== 'Error fetching data: 404') { 
+                setError(error.message)
+            }
         } finally {
             setLoading(false)
         }

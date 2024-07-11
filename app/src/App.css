@@ -1,7 +1,17 @@
-/* #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-} */
+.card-body{
+min-height: 5.5rem;
+border-top: red solid 1px;
+justify-content: center !important;
+}
 
+.bor {
+  border-bottom: white solid 1px;
+  border-top: white solid 1px;
+  padding: 0.5rem;
+}
+
+@media (max-width: 500px) {
+.fs-6 {
+  font-size: 0.6rem !important;
+}
+}

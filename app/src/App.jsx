@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import appFirebase from './credenciales'
 import { getAuth, onAuthStateChanged } from "firebase/auth"
@@ -9,6 +8,8 @@ import StarshipDetailPage from './pages/StarshipDetailPage'
 import Home from './pages/Home'
 import Login from './components/Login'
 import { GlobalProvider } from './context/GlobalState'
+import { useState, useEffect } from 'react'
+// import PrivateRoute from "./components/PrivateRoute"
 
 
 
@@ -32,12 +33,13 @@ function App() {
 
   return (
     <GlobalProvider>
-      <BrowserRouter>        
+      <BrowserRouter>      
+      {/* <PrivateRoute></PrivateRoute> */}
         {usuario ? (
           <>        
           <Header />
             <Routes>
-              <Route path="/" element={<Home correoUsuario={usuario.email} />} />
+              <Route path="/" element={<Home />} />
               <Route path="/list" element={<List />} />           
               <Route path="/detail/:id" element={<StarshipDetailPage />} />
             </Routes>
