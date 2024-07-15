@@ -11,7 +11,7 @@ export default function Pilots({ pilots }) {
             <div key={pilot.url} className="col-3 col-md-2 mb-3">
             <div className="card mt-3 bg-dark"> 
               <img src={`https://starwars-visualguide.com/assets/img/characters/${pilot.url.split("/")[5]}.jpg`} alt={pilot.name} className="card-img-top"/>
-              <div className="card-body d-flex align-items-center">
+              <div className="card-body card-body-details d-flex align-items-center">
                 <h5 className="card-title text-secondary fs-6 ">{pilot.name}</h5>
               </div>
             </div>

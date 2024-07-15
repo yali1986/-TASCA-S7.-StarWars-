@@ -8,7 +8,7 @@ const PrivateRoute = () => {
   return usuario ? (
     <Outlet />
   ) : (
-    <Navigate to="/login" />
+    <Navigate to="/login" state={{ from: location }} />
   )
 }
 

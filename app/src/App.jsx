@@ -9,8 +9,8 @@ import Home from './pages/Home'
 import Login from './components/Login'
 import { GlobalProvider } from './context/GlobalState'
 import { useState, useEffect } from 'react'
-// import PrivateRoute from "./components/PrivateRoute"
-
+import PrivateRoute from "./components/PrivateRoute"
+import { AuthProvider } from './context/AuthContext'
 
 
 const auth = getAuth(appFirebase)
@@ -33,21 +33,20 @@ function App() {
 
   return (
     <GlobalProvider>
+    <AuthProvider>
       <BrowserRouter>      
-      {/* <PrivateRoute></PrivateRoute> */}
-        {usuario ? (
-          <>        
-          <Header />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/list" element={<List />} />           
+      <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route element={<PrivateRoute />}>
+              <Route path="/list" element={<List />} />
               <Route path="/detail/:id" element={<StarshipDetailPage />} />
-            </Routes>
-          </>
-        ) : (
-          <Login />
-        )}
+            </Route>
+          </Routes>
+          
       </BrowserRouter>
+      </AuthProvider>
     </GlobalProvider>
   )
 }
