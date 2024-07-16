@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import logoStarWars from "../assets/logoStarWars.png"
 import appFirebase from '../credenciales'
@@ -8,14 +8,16 @@ const auth = getAuth(appFirebase)
 
 export default function Login() {
   const [registrando, setRegistrando] = useState(false)
+  const emailRef = useRef()
+  const passwordRef = useRef()
   const navigate = useNavigate()
   const location = useLocation()
   const from = location.state?.from?.pathname || "/"
 
   const functAuthentication = async (e) => {
     e.preventDefault()
-    const correo = e.target.email.value
-    const contrasenya = e.target.password.value
+    const correo = emailRef.current.value
+    const contrasenya = passwordRef.current.value
 
     try {
       if (registrando) {
@@ -31,6 +33,12 @@ export default function Login() {
         alert("Incorrect username or password")
       }
     }
+  }
+
+  const toggleRegistrando = () => {
+    setRegistrando(!registrando)
+    emailRef.current.value = ''
+    passwordRef.current.value = ''
   };
 
   return (
@@ -39,20 +47,20 @@ export default function Login() {
         <div className="col-md-6 offset-md-3 text-center">
           <img src={logoStarWars} alt="Login image" className='img-fluid mb-4' style={{ maxWidth: '200px' }} />
           <div className='card card-body shadow-lg p-4'>
-            <h2 className='mb-4'>{registrando ? "Regístrate" : "Inicia sesión"}</h2>
+            <h2 className='mb-4'>{registrando ? "Sign up" : "Log in"}</h2>
             <form onSubmit={functAuthentication}>
               <div className="mb-3">
-                <input type="email" placeholder='Introduce tu Email' id="email" className='form-control' required />
+                <input type="email" placeholder='Introduce tu Email' id="email" className='form-control' required ref={emailRef} />
               </div>
               <div className="mb-3">
-                <input type="password" placeholder='Introduce tu contraseña' id="password" className='form-control' required />
+                <input type="password" placeholder='Introduce tu contraseña' id="password" className='form-control' required ref={passwordRef} />
               </div>
-              <button className='btn btn-primary w-100 mt-3'>{registrando ? "Regístrate" : "Inicia sesión"}</button>
+              <button className='btn btn-primary w-100 mt-3'>{registrando ? "Sign up" : "Log in"}</button>
             </form>
             <div className='mt-4 bg-dark'>
-              <h6 className='d-inline'>{registrando ? "¿Ya tienes una cuenta? " : "¿No tienes cuenta? "}</h6>
-              <button className='btn btn-link' onClick={() => setRegistrando(!registrando)}>
-                {registrando ? "Inicia sesión" : "Regístrate"}
+              <h6 className='d-inline'>{registrando ? "Do you already have an account? " : "You do not have an account? "}</h6>
+              <button className='btn btn-link' onClick={toggleRegistrando}>
+                {registrando ? "Log in" : "Sign up"}
               </button>
             </div>
           </div>
