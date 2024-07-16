@@ -1,6 +1,6 @@
 export default function Pilots({ pilots }) {
     if (pilots.length === 0) {
-      return <p>No hay pilotos disponibles para esta nave.</p>
+      return <p className="text-start mt-5 ms-3">There are no pilots available for this starship.</p>
     }
   
     return (
